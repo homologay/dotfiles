@@ -1,0 +1,19 @@
+inherits = "mellow"
+
+ui.background = "bg"
+ui.text = "fg"
+
+[palette]
+fg = "#c3c2c4" # light grey
+bg = "#1b0021" # dark purple
+
+purple = "#a93cfc"
+white = "#d3d3d3"
+pink = "#f280fc"
+magenta = "#f280fc"
+light_magenta = "#f280fc"
+light_blue = "#80bafc"
+cyan = "#62fccb"
+green = "#94fca2"
+yellow = "#fceb80"
+
