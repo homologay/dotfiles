@@ -8,12 +8,13 @@ curl --proto "=https" --tlsv1.3 https://sh.rustup.rs -sSf | sh
 
 # install cargo  
 # rustup install clippy rust-analyzer, rustfmt, others,..
+rustup component add clippy rust-analyzer rustfmt cargo-audit cargo-outdated cargo-geiger
 
 # check rustup --version command return code, to see if rustup got PATH configured right
 # if fail, return error message and try to set PATH to include .cargo/bin 
 
 # install nushell
-xbps-install nushell
+sudo xbps-install nushell
 
 
 # (why not just install all the things needed for haskell development)
