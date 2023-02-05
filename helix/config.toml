@@ -1,7 +1,7 @@
 theme = "swag"
 
 [editor]
-auto-pairs = false
+auto-pairs = true
 
 [editor.lsp]
 display-messages = true
@@ -9,7 +9,7 @@ display-messages = true
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
-select = "underline"
+select = "block"
 
 [editor.file-picker]
 hidden = false
