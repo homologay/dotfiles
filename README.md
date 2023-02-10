@@ -1,12 +1,15 @@
-I'm not sure why anyone would want to replicate my sketchy, hacked-together toolchain, but if you do, here's how:
+Some dotfiles and fish scripts to set up 
+my development environment on a fresh 
+void linux glibc x86_64 install. 
 
-1. Have void linux installed. I've only tested this on the base, glibc version. 
-2. Install git, then clone the repo
+The best way to replicate my setup for
+a particular application is to clone
+the repo
 ```
 git clone https://github.com/maxinebeckie/workflow
 ```
-3. Run the script and pray it works
+and then symlink the folder for the desired
+application to your .config (eg. for alacritty)
 ```
-cd workflow
-sh init.sh
+ln -s /path/to/workflow/alacritty /home/your_username/.config/alacritty
 ```
