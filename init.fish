@@ -1,43 +1,35 @@
 #!/bin/fish
 
 # some tools useful for installing things
-sudo xbps-install curl gzip
+sudo xbps-install curl gzip base-devel
+# note: base-devel provides: m4, autoconf, automake, bc, binutils, bison, ed, libfl-devel, flex, libgcc-devel, 
+# kernel-libc-headers, glibc-devel, isl, cloog, mpfr, libmpc, gcc, libstdc++-devel, gcc-c++, gettext-libs, 
+# gettext, groff, libtool, make, patch, pkg-config, texinfo, unzip, xz. 
 
 # install fish shell
 sudo xbps-install fish-shell
-# create ~/.config/fish/config.fish (todo)
 
+# install rust and toolchain
 fish rust.fish
 
-# note: should just install enough to have an actual haskell dev env. 
-# install X11 and xmonad, according to https://www.reddit.com/r/voidlinux/comments/mpdr5f/how_to_install_xmonad/ 
-sudo xbps-install libX11-devel libXScrnSaver-devel libXft-devel libXinerama-devel libXrandr-devel
-sudo xbps-install cabal-install xmobar
-cabal install --lib xmonad xmonad-contrib X11
-cabal install xmonad
+# install alacritty
+sudo xbps-install alacritty
 
-#add $HOME/.cabal/bin to PATH
-# in fish config: PATH=$PATH:$HOME/.cabal/bin
+# install ytfzf
+sudo xbps-install jq mpv fzf yt-dlp #dependencies
+git clone https://github.com/pystardust/ytfzf
+cd $HOME/ytfzf
+make install doc
+cd $HOME
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ alacritty terminal emulator ~~~~~~
-# dependencies
-sudo xbps-install cmake freetype-devel expat-devel fontconfig-devel libxcb-devel pkg-config python3
+# some utilities
+sudo xbps-install ripgrep bat exa bottom tealdeer helix
 
-# install git repo
-git clone https://github.com/alacritty/alacritty.git
-cd alacritty
-# building for X11
-cargo build --release --no-default-features --features=x11
-# todo: copy binary to somewhere in $PATH
+# ripgrep-all
+sudo xbps-install pandoc poppler-utils ffmpeg tesseract #dependencies
+cargo install --locked ripgrep_all 
 
-# rest is at: https://github.com/alacritty/alacritty/blob/master/INSTALL.md
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-# install starship, kitty ... (terminal env)
-# todo!
-
-# install zellij, 
-
-# install and alias to GNU counterparts
-# bat=cat, exa=ls, rg, bottom=top, tldr (tealdeer), vim=hx, .. 
+# symlink conifg dirs to .config
+ln -s $HOME/workflow/fish $HOME/.config/fish
+ln -s $HOME/workflow/alacritty $HOME/.config/alacritty
+ln -s $HOM#/workflow/helix $HOME/.config/helix
