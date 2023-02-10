@@ -1,25 +1,13 @@
-#!/bin/sh
-
-# NOTE: should be run from $HOME
+#!/bin/fish
 
 # some tools useful for installing things
-sudo xbps-install curl git gzip
+sudo xbps-install curl gzip
 
 # install fish shell
 sudo xbps-install fish-shell
 # create ~/.config/fish/config.fish (todo)
 
-# ---------- installing rust and development tools ----------------
-# install rustup
-curl --proto "=https" --tlsv1.3 https://sh.rustup.rs -sSf | sh
-
-# install cargo  
-# rustup install clippy rust-analyzer, rustfmt, others,..
-rustup component add clippy rust-analyzer rustfmt cargo-audit cargo-outdated cargo-geiger
-
-# check rustup --version command return code, to see if rustup got PATH configured right
-# if fail, return error message and try to set PATH to include .cargo/bin 
-# -----------------------------------------------------------------
+fish rust.fish
 
 # note: should just install enough to have an actual haskell dev env. 
 # install X11 and xmonad, according to https://www.reddit.com/r/voidlinux/comments/mpdr5f/how_to_install_xmonad/ 
