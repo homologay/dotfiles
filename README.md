@@ -1,24 +1,22 @@
-Some dotfiles and fish scripts to set up 
-my development environment on a fresh 
-void linux glibc x86_64 install. 
+Note: this is in progress and not working yet.
 
-The best way to replicate my setup for
-a particular application is to clone
-the repo
+This is how I set up my development environment on a new machine:
+
+1. Install void linux. I'm only testing this on the base, glibc,
+x86_64 version. It might work on different architectures, or with the
+xfce version. It almost certainly won't work with musl. 
+
+2. Clone the repo to your `$HOME` directory:
 ```
+cd 
 git clone https://github.com/maxinebeckie/workflow
 ```
-and then symlink the folder for the desired
-application to your .config (eg. for alacritty)
+
+3. Run `init.sh`. It will need sudo permissions. 
 ```
-ln -s /path/to/workflow/alacritty /home/your_username/.config/alacritty
-```
-This is what I prefer to do, so I can keep all
-my dotfiles with the rest of my programming
-projects. However, if you moved the cloned 
-repo your config may break, so you may wish
-to copy the config folder instead:
-```
-cp -r /path/to/workflow/fish /home/your_username/.config/fish
+sh init.sh
 ```
 
+4. Pray
+
+You could also just copy my `.config` files, if you want to see my cute terminal setup. 
