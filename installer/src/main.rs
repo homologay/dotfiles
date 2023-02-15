@@ -5,7 +5,7 @@ use std::error::Error;
 use std::io::stdin;
 use std::process::Command;
 
-fn main() -> Result<(), Box<dyn Error>> {
+fn run() -> Result<(), Box<dyn Error>> {
     sudo::escalate_if_needed()?;
 
     println!("Welcome. Please enter your name.");
@@ -101,7 +101,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let home = match env::home_dir() {
         Some(path) => Ok(path),
-        None => Err(env::Error::from("can't find home directory")),
+        None => Err("can't find home directory"),
     }?;
 
     println!("configuring fish-shell");
@@ -130,3 +130,5 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+
+fn main() {}
