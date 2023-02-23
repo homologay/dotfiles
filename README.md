@@ -1,22 +1,23 @@
-Note: this is in progress and not working yet.
+Note: In progress. Not working. 
 
-This is how I set up my development environment on a new machine:
+This repo contains:
+  - dotfiles
+  - a shell script to install rustc, then run..
+  - .. the installer, written in rust, which installs
+    some programs I like.
 
-1. Install void linux. I'm only testing this on the base, glibc,
-x86_64 version. It might work on different architectures, or with the
-xfce version. It almost certainly won't work with musl. 
+This is a somewhat minimal development setup.
 
-2. Clone the repo to your `$HOME` directory:
-```
-cd 
+## How 2 Use
+
+Copy my alacritty or helix configs for cute colors. Or, to get all the stuff:
+
+Install void linux. You'll want the x86_64, glibc, base version. This might work with the xfce version but
+I'm not testing it with that. Then, run the following commands: 
+```sh
 git clone https://github.com/maxinebeckie/workflow
-```
-
-3. Run `init.sh`. It will need sudo permissions. 
-```
+cd workflow
 sh init.sh
 ```
-
-4. Pray
-
-You could also just copy my `.config` files, if you want to see my cute terminal setup. 
+The installer will prompt for some info that will help with some config (mostly git). Pressing enter will
+skip.  

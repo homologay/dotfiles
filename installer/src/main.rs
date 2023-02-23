@@ -1,9 +1,16 @@
-//! Installer, to be built and run after init.sh is run.
 extern crate sudo;
 use std::env;
 use std::error::Error;
 use std::io::stdin;
 use std::process::Command;
+
+// todo: logging and verbose mode
+// todo: use anyhow for errors
+// todo: a better understanding of how program
+//        sudo's, and better error handling if program
+//        is run as unpriviledged user. OR, maybe
+//     just implement it myself, like it was done in
+//     that blog..
 
 fn run() -> Result<(), Box<dyn Error>> {
     sudo::escalate_if_needed()?;
@@ -131,4 +138,9 @@ fn run() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-fn main() {}
+fn main() {
+    match run() {
+        Ok(()) => println!("installation success <3<3<3 (probably)"),
+        Err(e) => (), /* todo: handle this */
+    };
+}

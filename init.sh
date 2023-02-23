@@ -10,7 +10,7 @@ sudo xbps-install curl gzip base-devel
 curl --proto "=https" --tlsv1.3 https://sh.rustup.rs -sSf | sh
 rustup component add cargo clippy rust-analyzer rustfmt cargo-audit cargo-outdated cargo-geiger
 
-# install ytfzf
+# install ytfzf -TODO move this to installer
 sudo xbps-install jq mpv fzf yt-dlp #dependencies
 git clone https://github.com/pystardust/ytfzf
 cd $HOME/ytfzf
