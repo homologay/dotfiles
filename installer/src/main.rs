@@ -1,7 +1,9 @@
 extern crate sudo;
+use anyhow::Result;
 use std::env;
 use std::error::Error;
 use std::io::stdin;
+use std::process;
 use std::process::Command;
 
 // todo: logging and verbose mode
@@ -105,42 +107,47 @@ fn run() -> Result<(), Box<dyn Error>> {
         .arg("ripgrep_all")
         .output()?;
     println!("done!");
+    /*
+        let home = match env::home_dir() {
+            Some(path) => Ok(path),
+            None => Err("can't find home directory"),
+        }?;
 
-    let home = match env::home_dir() {
-        Some(path) => Ok(path),
-        None => Err("can't find home directory"),
-    }?;
+        println!("configuring fish-shell");
+        Command::new("ln")
+            .arg("-s")
+            .arg("{}/workflow/fish", home) // the dir
+            .arg("{}/.config/fish", home) // the symlink
+            .output()?;
+        println!("done!");
 
-    println!("configuring fish-shell");
-    Command::new("ln")
-        .arg("-s")
-        .arg("{}/workflow/fish", home) // the dir
-        .arg("{}/.config/fish", home) // the symlink
-        .output()?;
-    println!("done!");
+        println!("configuring alacritty");
+        Command::new("ln")
+            .arg("-s")
+            .arg("{}/workflow/alacritty", home) // the dir
+            .arg("{}/.config/alacritty", home) // the symlink
+            .output()?;
+        println!("done!");
 
-    println!("configuring alacritty");
-    Command::new("ln")
-        .arg("-s")
-        .arg("{}/workflow/alacritty", home) // the dir
-        .arg("{}/.config/alacritty", home) // the symlink
-        .output()?;
-    println!("done!");
-
-    println!("configuring helix");
-    Command::new("ln")
-        .arg("-s")
-        .arg("{}/workflow/helix", home) // the dir
-        .arg("{}/.config/helix", home) // the symlink
-        .output()?;
-    println!("done");
-
+        println!("configuring helix");
+        Command::new("ln")
+            .arg("-s")
+            .arg("{}/workflow/helix", home) // the dir
+            .arg("{}/.config/helix", home) // the symlink
+            .output()?;
+        println!("done");
+    */
     Ok(())
 }
 
 fn main() {
-    match run() {
-        Ok(()) => println!("installation success <3<3<3 (probably)"),
-        Err(e) => (), /* todo: handle this */
-    };
+    env_logger::init();
+
+    process::exit(match run() {
+        Ok(()) => 0,
+        Err(e) => {
+            eprintln!("Fatal: {e}");
+            1
+        }
+    });
 }
