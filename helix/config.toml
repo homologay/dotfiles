@@ -1,4 +1,4 @@
-theme = "swag"
+theme = "yolo"
 
 [editor]
 auto-pairs = false
@@ -7,7 +7,7 @@ auto-completion = false
 
 
 [editor.lsp]
-display-messages = true
+display-messages = false
 auto-signature-help = false
 display-signature-help-docs = false
 
@@ -15,4 +15,4 @@ display-signature-help-docs = false
 hidden = false
 
 [editor.statusline]
-right = ["position", "position-percentage", "selections"]
+right = ["position-percentage", "selections"]
