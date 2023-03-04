@@ -2,13 +2,19 @@ extern crate sudo;
 use anyhow::Result;
 use std::env;
 use std::error::Error;
-use std::io::stdin;
+use std::io;
+use std::io::{stdin, Write};
 use std::process;
 use std::process::Command;
 
-// todo: logging and verbose mode
-// todo: use anyhow for errors
-// todo: a better understanding of how program
+// TODO: logging and verbose mode
+// TODO: better error handling: 
+//        - for packages which are not depended on, error
+//        should be printed and program should keep running
+//        - for packages which have reverse-dependencies, 
+//        error should be printed and all reverse-dependencies
+//        should be skipped
+// TODO: a better understanding of how program
 //        sudo's, and better error handling if program
 //        is run as unpriviledged user. OR, maybe
 //     just implement it myself, like it was done in
@@ -17,7 +23,7 @@ use std::process::Command;
 fn run() -> Result<(), Box<dyn Error>> {
     sudo::escalate_if_needed()?;
 
-    println!("Welcome. Please enter your name.");
+    println!("Welcome to the installer. Please enter your name for git config.");
     let mut name = String::new();
     stdin().read_line(&mut name)?;
 
@@ -26,80 +32,128 @@ fn run() -> Result<(), Box<dyn Error>> {
     stdin().read_line(&mut email)?;
     println!("Excellent. Beginning installation.");
 
-    println!("installing alacritty...");
+    install_xbps_packages()?;
+    install_cargo_packages()?;
+
+    let packages_to_configure = ["fish-shell", "alacritty", "helix"];
+    configure(&packages_to_configure)?;
+    Ok(())
+}
+
+fn main() {
+    env_logger::init();
+
+    process::exit(match run() {
+        Ok(()) => 0,
+        Err(e) => {
+            eprintln!("Error: {e}");
+            1
+        }
+    });
+}
+
+fn install_xbps_packages() -> Result<(), Box<dyn Error>> {
+    //sl: the most important package
+    print!("installing sl...");
+    io::stdout().flush();
+    match Command::new("xbps-install").arg("-y").arg("sl").output() {
+        Ok(_) => println!("done!"),
+        Err(e) => return Err(Box::new(e)),
+    }
+
+    //alacritty: terminal emulator
+    print!("installing alacritty...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("alacritty")
         .output()?;
     println!("done!");
 
-    println!("installing ripgrep...");
+    //ripgrep: text search tool
+    print!("installing ripgrep...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("ripgrep")
         .output()?;
     println!("done!");
 
-    println!("installing bat...");
+    //bat: syntax-highlighted cat
+    print!("installing bat...");
     Command::new("xbps-install").arg("-y").arg("bat").output()?;
     println!("done!");
 
-    println!("installing bottom...");
+    //bottom: pretty-printed top
+    print!("installing bottom...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("bottom")
         .output()?;
     println!("done!");
 
-    println!("installing tealdeer...");
+    //tealdeer: tldr implementation
+    print!("installing tealdeer...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("tealdeer")
         .output()?;
     println!("done!");
 
-    println!("installing helix...");
+    //helix: text editor
+    print!("installing helix...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("helix")
         .output()?;
     println!("done!");
 
-    println!("installing fish-shell...");
+    //fish: shell
+    print!("installing fish-shell...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("fish-shell")
         .output()?;
     println!("done!");
 
-    println!("installing pandoc...");
+    //pandoc: document format converter
+    print!("installing pandoc...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("pandoc")
         .output()?;
     println!("done!");
 
-    println!("installing poppler-utils...");
+    //poppler-utils: pdf-rendering library
+    print!("installing poppler-utils...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("poppler-utils")
         .output()?;
     println!("done!");
 
-    println!("installing ffmpeg");
+    //ffmpeg: audio converter
+    print!("installing ffmpeg...");
     Command::new("xbps-install")
         .arg("-y")
         .arg("ffmpeg")
         .output()?;
     println!("done!");
 
-    println!("installing tesseract...");
-    Command::new("xbps-install")
+    //tesseract: optical character recognition engine
+    print!("installing tesseract...");
+    io::stdout().flush();
+    match Command::new("xbps-install")
         .arg("-y")
         .arg("tesseract")
-        .output()?;
-    println!("done!");
+        .output()
+    {
+        Ok(_) => println!("done!"),
+        Err(e) => return Err(Box::new(e)),
+    };
 
+    Ok(())
+}
+
+fn install_cargo_packages() -> Result<(), Box<dyn Error>> {
     println!("installing ripgrep_all...");
     Command::new("cargo")
         .arg("install")
@@ -107,7 +161,15 @@ fn run() -> Result<(), Box<dyn Error>> {
         .arg("ripgrep_all")
         .output()?;
     println!("done!");
-    /*
+
+    Ok(())
+}
+
+///symlink configuration folders above with where the program is looking for them 
+fn configure(packages: &[&str]) -> Result<(), Box<dyn Error>> {
+
+    //should do the below code, but abstract over each package name in packages. 
+/*
         let home = match env::home_dir() {
             Some(path) => Ok(path),
             None => Err("can't find home directory"),
@@ -138,16 +200,4 @@ fn run() -> Result<(), Box<dyn Error>> {
         println!("done");
     */
     Ok(())
-}
-
-fn main() {
-    env_logger::init();
-
-    process::exit(match run() {
-        Ok(()) => 0,
-        Err(e) => {
-            eprintln!("Fatal: {e}");
-            1
-        }
-    });
 }
