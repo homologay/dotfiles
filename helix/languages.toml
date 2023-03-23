@@ -1,0 +1,11 @@
+[[language]]
+name = "rust"
+auto-format = false
+indent = { tab-width = 2, unit = " " }
+file-types = ["rs"]
+diagnostic-severity = "Error"
+
+[language.language-server]
+command = "rustup"
+args = ["run", "stable", "rust-analyzer"]
+
