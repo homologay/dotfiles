@@ -16,3 +16,6 @@ hidden = false
 
 [editor.statusline]
 right = ["position-percentage", "selections"]
+
+[editor.soft-wrap]
+enable = true

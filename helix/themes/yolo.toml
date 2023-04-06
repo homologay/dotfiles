@@ -33,10 +33,6 @@ label = "purple"
 "markup.link.text" = "pink"
 "markup.raw" = "pink"
 
-"diff.plus" = "#35bf86"
-"diff.minus" = "#f22c86"
-"diff.delta" = "#6f44f0"
-
 "ui.background" = { bg = "midnight" }
 "ui.background.separator" = { fg = "comet" }
 "ui.linenr" = { fg = "comet" }
@@ -56,7 +52,6 @@ label = "purple"
 
 "ui.selection" = { bg = "#540099" }
 "ui.selection.primary" = { bg = "#540099" }
-# TODO: namespace ui.cursor as ui.selection.cursor?
 "ui.cursor.select" = { bg = "delta" }
 "ui.cursor.insert" = { bg = "white" }
 "ui.cursor.match" = { fg = "#212121", bg = "#6C6999" }
@@ -68,10 +63,10 @@ label = "purple"
 "ui.menu.selected" = { fg = "revolver", bg = "white" }
 "ui.menu.scroll" = { fg = "lavender", bg = "comet" }
 
-"diagnostic.hint" = { underline = { color = "silver", style = "curl" } }
-"diagnostic.info" = { underline = { color = "delta", style = "curl" } }
-"diagnostic.warning" = { underline = { color = "lightning", style = "curl" } }
-"diagnostic.error" = { underline = { color = "apricot", style = "curl" } }
+#"diagnostic.hint" = { underline = { color = "silver", style = "curl" } }
+#"diagnostic.info" = { underline = { color = "delta", style = "curl" } }
+#"diagnostic.warning" = { underline = { color = "lightning", style = "curl" } }
+#"diagnostic.error" = { underline = { color = "apricot", style = "curl" } }
 
 warning = "lightning"
 error = "apricot"
