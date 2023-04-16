@@ -1,5 +1,7 @@
-(border_width: 1,
-margin: 10,
+#![enable(implicit_some)]
+(border_width: 2,
+margin: 2,
+workspace_margin: 2,
 default_border_color: "#f97dd2",
 floating_border_color: "#555555",
 focused_border_color: "#281733",
