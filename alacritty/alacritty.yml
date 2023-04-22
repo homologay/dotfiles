@@ -9,7 +9,7 @@ colors:
     foreground: '0xe4e3ea'
   normal:
     black:   '0x123e7c'
-    red:     '0xff0000'
+    red:     '0x8f0000'
     green:   '0xd300c4'
     yellow:  '0xf57800'
     blue:    '0x711c91'
