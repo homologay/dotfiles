@@ -1,2 +1,3 @@
 --theme="ansi"
---style="numbers,changes,header"
+--style="numbers"
+--color="never"
