@@ -2,21 +2,27 @@ theme = "yolo"
 
 [editor]
 auto-pairs = false
-auto-format = true
+auto-format = false 
 auto-completion = false
+gutters = ["spacer"]
+bufferline = "multiple"
 
 [editor.lsp]
+enable = true
 display-messages = false
 auto-signature-help = false
 display-inlay-hints = false 
-snippets = false
 display-signature-help-docs = false
+snippets = false
 
 [editor.file-picker]
 hidden = false
 
 [editor.statusline]
 right = ["position-percentage", "selections"]
+mode.normal = ":/"
+mode.insert = ">:)"
+mode.select = ":0"
 
 [editor.soft-wrap]
 enable = true
