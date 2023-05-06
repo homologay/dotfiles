@@ -38,11 +38,11 @@
     ],
     window_rules: [],
     disable_current_tag_swap: false,
-    disable_tile_drag: false,
+    disable_tile_drag: true,
     disable_window_snap: true,
     focus_behaviour: Sloppy,
     focus_new_windows: true,
-    single_window_border: true,
+    single_window_border: false,
     sloppy_mouse_follows_focus: true,
     auto_derive_workspaces: true,
     keybind: [
@@ -50,8 +50,8 @@
         (command: Execute, value: "alacritty", modifier: ["modkey", "Shift"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
-        (command: Execute, value: "loginctl kill-session $XDG_SESSION_ID", modifier: ["modkey", "Shift"], key: "x"),
-        (command: Execute, value: "slock", modifier: ["modkey", "Control"], key: "l"),
+        (command: Execute, value: "loginctl kill-session $XDG_SESSION_ID", modifier: ["modkey", "Shift"], key: "x"), //close window
+        (command: Execute, value: "slock", modifier: ["modkey", "Control"], key: "l"), //lock screen
         (command: MoveToLastWorkspace, value: "", modifier: ["modkey", "Shift"], key: "w"),
         (command: SwapTags, value: "", modifier: ["modkey"], key: "w"),
         (command: MoveWindowUp, value: "", modifier: ["modkey", "Shift"], key: "k"),

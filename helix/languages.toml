@@ -4,7 +4,7 @@ auto-format = false
 indent = { tab-width = 2, unit = " " }
 file-types = ["rs"]
 language-server = { command = "rust-analyzer", args = ["-q"] }
-# diagnostic-severity = "Error"
+diagnostic-severity = "Error"
 
 [language.config]
 diagnostics.enable = false 
