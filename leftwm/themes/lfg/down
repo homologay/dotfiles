@@ -1,11 +1,12 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
-SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+set script_path (cd (status dirname); pwd -P)
 
 #set background
-if [ -x "$(command -v feh)" ]; then
-  feh --bg-scale $SCRIPTPATH/down.jpg
-fi
+
+if test -x (command -v feh)
+    feh --bg-scale $script_path/down.jpg
+end
 
 leftwm-command "UnloadTheme"
 
@@ -14,3 +15,4 @@ pkill compton
 pkill picom
 pkill lemonbar
 
+echo "going down!"
