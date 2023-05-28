@@ -1,3 +1,3 @@
 function la 
-    ls -a --color=always
+    ls -a --color=always $argv
 end

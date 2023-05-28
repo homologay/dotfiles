@@ -15,4 +15,5 @@ pkill compton
 pkill picom
 pkill lemonbar
 
-echo "going down!"
+# TODO: lemonbar instances are unnecessary
+# TODO: pkill firefox

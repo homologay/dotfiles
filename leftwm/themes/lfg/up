@@ -34,4 +34,13 @@ end
 #boot lemonbar and pipe the status of left into it
 # NOTE: will not use lemonbar. Just here to see if it affects other parts of leftwm. 
 
-echo "going up!"
+# open firefox
+firefox
+
+# open alacrity
+# why isn't this working??
+alacritty
+
+# ^ how to get these on different workspaces?
+leftwm-command "SendWorkspaceToTag 1 hello"
+leftwm-command "SendWindowToTag hello"
