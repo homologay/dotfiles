@@ -1,5 +1,8 @@
 # helper functions for the other fish functions
 
+# TODO: these need to be in different files 
+#     (one per function, same name)
+
 # note: same backends for sch.fish can work for prev.fish
 
 # for sch.fish
