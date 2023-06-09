@@ -6,9 +6,6 @@ function fish_prompt
     echo -n (set_color blue)(prompt_pwd)' '
 
     set_color -o
-    if fish_is_root_user
-        echo -n (set_color red)'❯ '
-    end
     echo -n (set_color cyan)'❯'(set_color white)'❯'(set_color magenta)'❯ '
     set_color normal
 end

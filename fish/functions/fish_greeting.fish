@@ -1,3 +1,3 @@
 function fish_greeting
-    echo "<3"
+    echo "hello beautiful <3"
 end
