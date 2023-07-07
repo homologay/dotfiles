@@ -18,6 +18,7 @@
     layouts: [
         MainAndHorizontalStack,
         MainAndVertStack,
+        Monocle,
         MainAndDeck,
         GridHorizontal,
         EvenHorizontal,
@@ -27,7 +28,6 @@
         CenterMain,
         CenterMainBalanced,
         CenterMainFluid,
-        Monocle,
         RightWiderLeftStack,
         LeftWiderRightStack,
     ],
@@ -52,6 +52,9 @@
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
         (command: Execute, value: "loginctl kill-session $XDG_SESSION_ID", modifier: ["modkey", "Shift"], key: "x"), //close window
         (command: Execute, value: "slock", modifier: ["modkey", "Control"], key: "l"), //lock screen
+        (command: Execute, value: "scrot --file \"/home/floorscreenshot_(date --iso-8601=\'seconds\')\"", modifier: ["modkey"], key: "s"), // screenshot
+        (command: Execute, value: "scrot -s --file \"/home/floor/screenshot_(date --iso-8601=\'seconds\')\"", modifier: ["modkey", "Shift"], key: "s"), // screenshot select
+        (command: Execute, value: "touch \"test.txt\"", modifier: ["modkey", "Shift"], key: "t"), // test
         (command: MoveToLastWorkspace, value: "", modifier: ["modkey", "Shift"], key: "w"),
         (command: SwapTags, value: "", modifier: ["modkey"], key: "w"),
         (command: MoveWindowUp, value: "", modifier: ["modkey", "Shift"], key: "k"),

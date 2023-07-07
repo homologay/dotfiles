@@ -1,10 +1,10 @@
 function updater 
+    set_color FC7ED4; echo "XBPS <3"; set_color normal
+    sleep 0.5;
+    sudo xbps-install -Su -y # i think one of these is to update the repo? or something?
     sudo xbps-install -Su -y
+    set_color FC7ED4; echo "RUST <3"; set_color normal
+    sleep 0.5;
     rustup update
     cargo install-update -a
-    # update lua packages
-    # update python packages
-    #     idk python is a mess for this. I don't get how pip3 works
-    # update fisher
-    # update npm
 end
