@@ -1,2 +1,0 @@
-#!/usr/bin/env fish
-leftwm-command "SendWorkspaceToTag $1 $2"
