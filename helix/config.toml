@@ -8,7 +8,7 @@ gutters = ["spacer"]
 bufferline = "multiple"
 
 [editor.lsp]
-enable = true
+enable = false # seemingly I need to turn off all lsp's so the rust one stops being so annoying
 display-messages = false
 auto-signature-help = false
 display-inlay-hints = false 

@@ -1,5 +1,6 @@
 [[language]]
 name = "rust"
+language-server.command = "" #turning rust lsp off cause I can't figure out how to disable the annoying error highlights
 auto-format = false
 indent = { tab-width = 2, unit = " " }
 file-types = ["rs"]
