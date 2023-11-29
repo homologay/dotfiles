@@ -6,6 +6,6 @@ function fish_prompt
     echo -n (set_color blue)(prompt_pwd)' '
 
     set_color -o
-    echo -n (set_color cyan)'❯'(set_color white)'❯'(set_color magenta)'❯ '
+    echo -n (set_color cyan)'?'
     set_color normal
 end
