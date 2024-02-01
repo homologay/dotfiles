@@ -1,19 +1,6 @@
 [[language]]
 name = "rust"
-language-server.command = "" #turning rust lsp off cause I can't figure out how to disable the annoying error highlights
 auto-format = false
 indent = { tab-width = 2, unit = " " }
 file-types = ["rs"]
-diagnostic-severity = "Error"
 
-[language-server.rust-analyzer]
-command = "rust-analyzer"
-diagnostics.enable = "false"
-
-[language-server.rust-analyzer.config]
-inlayHints.bindingModeHints.enable = false
-inlayHints.closingBraceHints.minLines = 10
-inlayHints.closureReturnTypeHints.enable = "with_block"
-inlayHints.discriminantHints.enable = "fieldless"
-inlayHints.lifetimeElisionHints.enable = "skip_trivial"
-inlayHints.typeHints.hideClosureInitialization = false
