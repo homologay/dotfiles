@@ -1,8 +1,12 @@
 #!/bin/sh
-
-# basic terminal functionality (ie. stuff that is important to my terminal workflow, some functions in fish/functions make use of these)
-apk add alacritty tree ripgrep fzf htop helix bat fish-shell fish-shell-doc 
+apk add tree ripgrep fzf htop helix bat
 
 # dependencies for chimera-live
 apk add xorriso squashfs-tools-ng
 
+ln -s $(pwd)/helix $HOME/.config/helix
+ln -s $(pwd)/bat $HOME/.config/bat
+ln -s $(pwd)/htop $HOME/.config/htop
+
+git config --global user.email "$EMAIL"
+git config --global user.name "$NAME"
